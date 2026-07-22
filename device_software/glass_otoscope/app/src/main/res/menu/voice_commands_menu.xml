@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/capture"
+        android:icon="@android:drawable/ic_menu_camera"
+        android:title="@string/capture" />
+    <item
+        android:id="@+id/analyze"
+        android:icon="@android:drawable/ic_menu_camera"
+        android:title="@string/analyze" />
+    <item
+        android:id="@+id/scan"
+        android:icon="@android:drawable/ic_menu_camera"
+        android:title="@string/scan" />
+    <item
+        android:id="@+id/takePicture"
+        android:icon="@android:drawable/ic_menu_camera"
+        android:title="@string/take_picture" />
+    <item
+        android:id="@+id/takeAPicture"
+        android:icon="@android:drawable/ic_menu_camera"
+        android:title="@string/take_a_picture" />
+    <item
+        android:id="@+id/process"
+        android:icon="@android:drawable/ic_menu_camera"
+        android:title="@string/process" />
+    <item
+        android:id="@+id/video"
+        android:icon="@drawable/ic_delete"
+        android:title="@string/video" />
+    <item
+        android:id="@+id/back"
+        android:icon="@drawable/ic_delete"
+        android:title="@string/back" />
+    <item
+        android:id="@+id/goBack"
+        android:icon="@drawable/ic_delete"
+        android:title="@string/goBack" />
+    <item
+        android:id="@+id/goMain"
+        android:icon="@drawable/ic_delete"
+        android:title="@string/goMain" />
+    <item
+        android:id="@+id/goToMain"
+        android:icon="@drawable/ic_delete"
+        android:title="@string/goToMain" />
+    <item
+        android:id="@+id/quit"
+        android:icon="@drawable/ic_delete"
+        android:title="@string/quit"/>
+    <item
+        android:id="@+id/exit"
+        android:icon="@drawable/ic_delete"
+        android:title="@string/exit"/>
+    <item
+        android:id="@+id/terminate"
+        android:icon="@drawable/ic_delete"
+        android:title="@string/terminate"/>
+    <item
+        android:id="@+id/lightOn"
+        android:icon="@android:drawable/star_big_on"
+        android:title="@string/lightOn"/>
+    <item
+        android:id="@+id/lightOff"
+        android:icon="@android:drawable/btn_star_big_off"
+        android:title="@string/lightOff"/>
+</menu>

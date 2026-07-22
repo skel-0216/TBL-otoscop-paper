@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">OtoView</string>
+    <string name="app_tagline">Live Otoscopy</string>
+    <string name="btn_led">LED</string>
+    <string name="btn_start">Start</string>
+    <string name="btn_gallery">Gallery</string>
+    <string name="btn_ai">AI</string>
+    <string name="btn_close">Close</string>
+    <string name="stream_status_init">Stream: Idle</string>
+    <string name="cmd_status_init">Cmd: Disconnected</string>
+    <string name="btn_capture">Capture</string>
+    <string name="ai_result_title">AI Result</string>
+    <string name="ai_result_brief">Top: %1$s (%2$s%%)</string>
+    <string name="led_off">LED OFF</string>
+    <string name="led_on">LED ON</string>
+    <string name="delete_title">Delete image</string>
+    <string name="delete_message">Delete this image?</string>
+    <string name="delete">Delete</string>
+    <string name="cancel">Cancel</string>
+    <string name="delete_done">Deleted</string>
+    <string name="delete_failed">Delete failed</string>
+</resources>

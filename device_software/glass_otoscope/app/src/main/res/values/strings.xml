@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">EarTest</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="initializing_video">Initializing video&#8230;</string>
+    <string name="closing_video_connection">Closing video connection</string>
+    <string name="lost_the_connection_to_the_camera">Lost the connection 1.</string>
+    <string name="error_couldnt_connect">Couldn\'t connect to the camera.</string>
+    <string name="error_lost_connection">Lost the connection 2.</string>
+    <string name="test_activity">=====TEST ACTIVITY=====</string>
+    <string name="capture">Capture</string>
+    <string name="quit">Quit</string>
+    <string name="take_picture">Take Picture</string>
+    <string name="exit">Exit</string>
+    <string name="video">Video</string>
+    <string name="back">Back</string>
+    <string name="take_a_picture">Take A Picture</string>
+    <string name="process">Process</string>
+    <string name="goBack">Go Back</string>
+    <string name="goMain">Go Main</string>
+    <string name="goToMain">Go To Main</string>
+    <string name="terminate">Terminate</string>
+    <string name="lightOn">Light On</string>
+    <string name="lightOff">Light Off</string>
+    <string name="analyze">Analyze</string>
+    <string name="scan">Scan</string>
+    <string name="analyzing">Analyzing…</string>
+    <string name="analyze_failed">Analyze failed</string>
+</resources>

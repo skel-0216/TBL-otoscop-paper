@@ -1,0 +1,17 @@
+# Extra dependencies for the ROI cropping step only (roi_crop_sam2.py, the C
+# operator). Requires Python >= 3.10 (SAM 2 constraint), so this is kept
+# separate from requirements.txt, which targets Python >= 3.9.
+#
+# Install SAM 2 from source:
+#     pip install "git+https://github.com/facebookresearch/sam2.git"
+# Checkpoint (place anywhere, pass via --sam2-ckpt):
+#     sam2.1_hiera_large.pt
+#     https://dl.fbaipublicfiles.com/segment_anything_2/092824/sam2.1_hiera_large.pt
+# Config (resolved inside the sam2 package, pass via --sam2-cfg):
+#     configs/sam2.1/sam2.1_hiera_l.yaml
+
+torch>=2.3
+torchvision>=0.18
+numpy>=1.24
+opencv-python>=4.7
+# sam2  -- install from git as shown above (not on PyPI)

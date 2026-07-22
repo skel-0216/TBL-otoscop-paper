@@ -1,0 +1,17 @@
+# Always store/check out with LF (Raspberry Pi = Linux deployment target)
+* text=auto eol=lf
+
+# Shell scripts must be LF (CRLF causes a 'bad interpreter' error on Linux)
+*.sh text eol=lf
+
+# Python / config files also LF
+*.py text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+
+# Do not convert binary/media
+*.h264 binary
+*.jpg binary
+*.jpeg binary
+*.png binary
+*.mp4 binary

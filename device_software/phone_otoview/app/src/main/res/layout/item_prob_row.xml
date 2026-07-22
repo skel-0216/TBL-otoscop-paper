@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="40dp"
+    android:paddingHorizontal="8dp"
+    android:paddingVertical="6dp">
+
+    <TextView
+        android:id="@+id/tvLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="LABEL"
+        android:textStyle="bold"
+        android:textSize="14sp"
+        android:textColor="@color/text_primary"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/tvPercent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintWidth_percent="0.6"/>
+
+    <TextView
+        android:id="@+id/tvPercent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0.0%"
+        android:textStyle="bold"
+        android:textSize="13sp"
+        android:textColor="@color/text_secondary"
+        app:layout_constraintTop_toTopOf="@id/tvLabel"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/barContainer"
+        android:layout_width="0dp"
+        android:layout_height="8dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintTop_toBottomOf="@id/tvLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <View
+            android:id="@+id/barTrack"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/prob_progress_bg"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/glPercent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintGuide_begin="0dp"
+            app:layout_constraintGuide_percent="0.0"
+            android:orientation="vertical" />
+
+        <View
+            android:id="@+id/barFill"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/prob_progress"
+            app:layout_constraintTop_toTopOf="@id/barTrack"
+            app:layout_constraintBottom_toBottomOf="@id/barTrack"
+            app:layout_constraintStart_toStartOf="@id/barTrack"
+            app:layout_constraintEnd_toStartOf="@id/glPercent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

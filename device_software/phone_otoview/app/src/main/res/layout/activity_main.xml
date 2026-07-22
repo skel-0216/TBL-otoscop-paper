@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_bg"
+    android:fitsSystemWindows="true">
+
+    <!-- ================= background pattern (backmost) ================= -->
+    <!-- Change pattern: set pbgType to one of dots/grid/diagonal/plus/crosshatch/none -->
+    <com.example.otoview.ui.PatternBackgroundView
+        android:id="@+id/bgPattern"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:pbgBaseColor="@color/app_bg"
+        app:pbgPatternColor="#DFE6EF"
+        app:pbgSpacing="26dp"
+        app:pbgType="dots" />
+
+    <!-- ================= app header ================= -->
+    <!-- Adjust top margin: increasing layout_marginTop (dp) below moves the banner further down -->
+    <LinearLayout
+        android:id="@+id/appBar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="20dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- logo mark (tap target to enter developer mode) — the only gradient accent -->
+        <FrameLayout
+            android:id="@+id/brandLogo"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:background="@drawable/bg_appbar_logo"
+            android:elevation="4dp">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_oto" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="11dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:letterSpacing="-0.01"
+                android:text="@string/app_name"
+                android:textColor="@color/text_primary"
+                android:textSize="19sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/app_tagline"
+                android:textColor="@color/muted"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvConnStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/status_chip_idle"
+            android:paddingHorizontal="11dp"
+            android:paddingVertical="6dp"
+            android:text="Idle"
+            android:textColor="@android:color/white"
+            android:textSize="11sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- ================= live video ================= -->
+    <FrameLayout
+        android:id="@+id/videoContainer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/bg_panel_round"
+        android:clipToOutline="true"
+        android:elevation="8dp"
+        android:outlineProvider="background"
+        app:layout_constraintDimensionRatio="726:633"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appBar">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/img_bg" />
+
+        <com.example.otoview.ui.CropTextureView
+            android:id="@+id/videoView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:cropCenterX="605"
+            app:cropCenterY="316"
+            app:cropScaleMode="stretch"
+            app:cropWidth="726"
+            app:cropHeight="633"
+            app:srcHeight="720"
+            app:srcWidth="1280" />
+
+        <com.example.otoview.ui.DebugCircleView
+            android:id="@+id/debugCircle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="false"
+            android:focusable="false"
+            android:importantForAccessibility="no" />
+
+        <com.example.otoview.ui.CalibrationOverlayView
+            android:id="@+id/calibOverlay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="false"
+            android:focusable="false"
+            android:importantForAccessibility="no"
+            android:visibility="gone" />
+
+    </FrameLayout>
+
+    <!-- ================= connection/session info card ================= -->
+    <LinearLayout
+        android:id="@+id/infoCard"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/bg_panel_round"
+        android:clipToOutline="true"
+        android:elevation="6dp"
+        android:orientation="horizontal"
+        android:outlineProvider="background"
+        android:padding="14dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/videoContainer">
+
+        <!-- Wi-Fi -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:letterSpacing="0.07"
+                android:text="WI-FI"
+                android:textAllCaps="true"
+                android:textColor="@color/muted"
+                android:textSize="10sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <View
+                    android:id="@+id/infoWifiDot"
+                    android:layout_width="7dp"
+                    android:layout_height="7dp"
+                    android:background="@drawable/dot_status"
+                    android:backgroundTint="@color/status_idle" />
+
+                <TextView
+                    android:id="@+id/infoWifiText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:text="—"
+                    android:textColor="@color/text_primary"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Stream -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:letterSpacing="0.07"
+                android:text="STREAM"
+                android:textAllCaps="true"
+                android:textColor="@color/muted"
+                android:textSize="10sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/infoStream"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="—"
+                android:textColor="@color/text_primary"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Rate -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:letterSpacing="0.07"
+                android:text="RATE"
+                android:textAllCaps="true"
+                android:textColor="@color/muted"
+                android:textSize="10sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/infoRate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="— fps"
+                android:textColor="@color/text_primary"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- ================= controls card ================= -->
+    <!-- Gap from the info card: adjust with layout_marginTop (dp) below -->
+    <LinearLayout
+        android:id="@+id/actionsCard"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/bg_panel_round"
+        android:clipToOutline="true"
+        android:elevation="8dp"
+        android:orientation="vertical"
+        android:outlineProvider="background"
+        android:padding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/infoCard">
+
+        <!-- Button height: adjust with the layout_height (dp) of row1/row2 -->
+        <LinearLayout
+            android:id="@+id/row1"
+            android:layout_width="match_parent"
+            android:layout_height="66dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <Button
+                android:id="@+id/btnStart"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/bg_button_primary"
+                android:drawableStart="@drawable/ic_play"
+                android:drawablePadding="8dp"
+                android:drawableTint="@color/on_primary"
+                android:elevation="0dp"
+                android:paddingStart="18dp"
+                android:paddingEnd="18dp"
+                android:stateListAnimator="@null"
+                android:text="@string/btn_start"
+                android:textAllCaps="false"
+                android:textColor="@color/on_primary"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <Space
+                android:layout_width="11dp"
+                android:layout_height="match_parent" />
+
+            <Button
+                android:id="@+id/btnGallery"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/bg_button_tonal"
+                android:drawableStart="@drawable/ic_gallery"
+                android:drawablePadding="8dp"
+                android:drawableTint="@color/on_tonal"
+                android:elevation="0dp"
+                android:paddingStart="18dp"
+                android:paddingEnd="18dp"
+                android:stateListAnimator="@null"
+                android:text="@string/btn_gallery"
+                android:textAllCaps="false"
+                android:textColor="@color/on_tonal"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="11dp" />
+
+        <LinearLayout
+            android:id="@+id/row2"
+            android:layout_width="match_parent"
+            android:layout_height="66dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <ToggleButton
+                android:id="@+id/btn_switchLed"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/bg_toggle_led"
+                android:drawableStart="@drawable/led_toggle_icon"
+                android:drawablePadding="8dp"
+                android:elevation="0dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:stateListAnimator="@null"
+                android:textAllCaps="false"
+                android:textColor="@color/led_toggle_text"
+                android:textOff="@string/led_off"
+                android:textOn="@string/led_on"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <Space
+                android:layout_width="11dp"
+                android:layout_height="match_parent" />
+
+            <Button
+                android:id="@+id/btnCaptureAi"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/bg_button_primary"
+                android:drawableStart="@drawable/ic_camera"
+                android:drawablePadding="8dp"
+                android:drawableTint="@color/on_primary"
+                android:elevation="0dp"
+                android:paddingStart="18dp"
+                android:paddingEnd="18dp"
+                android:stateListAnimator="@null"
+                android:text="@string/btn_capture"
+                android:textAllCaps="false"
+                android:textColor="@color/on_primary"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

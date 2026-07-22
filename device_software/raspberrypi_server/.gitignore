@@ -1,0 +1,19 @@
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Generated media (camera captures / recordings)
+*.h264
+*.jpg
+*.jpeg
+*.png
+*.mp4
+
+# Backup / temp files
+*.backup
+*.bak
+*~
+
+# OS
+.DS_Store
+Thumbs.db

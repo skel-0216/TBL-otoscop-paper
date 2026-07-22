@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CropTextureView">
+        <attr name="srcWidth" format="integer"/>
+        <attr name="srcHeight" format="integer"/>
+        <attr name="cropCenterX" format="float"/>
+        <attr name="cropCenterY" format="float"/>
+        <attr name="cropSize" format="integer"/>
+        <!-- use width/height for a rectangular crop -->
+        <attr name="cropWidth" format="integer"/>
+        <attr name="cropHeight" format="integer"/>
+        <!-- show the full frame (no crop) -->
+        <attr name="useFullFrame" format="boolean"/>
+        <!-- 0=cover (fill), 1=fit (show all), 2=stretch (fill X/Y independently) -->
+        <attr name="cropScaleMode">
+            <enum name="cover" value="0"/>
+            <enum name="fit" value="1"/>
+            <enum name="stretch" value="2"/>
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="PatternBackgroundView">
+        <attr name="pbgBaseColor" format="color"/>
+        <attr name="pbgPatternColor" format="color"/>
+        <attr name="pbgSpacing" format="dimension"/>
+        <!-- select background pattern -->
+        <attr name="pbgType">
+            <enum name="none" value="0"/>
+            <enum name="dots" value="1"/>
+            <enum name="grid" value="2"/>
+            <enum name="diagonal" value="3"/>
+            <enum name="plus" value="4"/>
+            <enum name="crosshatch" value="5"/>
+        </attr>
+    </declare-styleable>
+</resources>

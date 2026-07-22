@@ -1,0 +1,9 @@
+# Raspberry Pi camera / GPIO dependencies
+# Note: on Raspberry Pi OS these are usually installed via apt:
+#   sudo apt install -y python3-picamera2 python3-rpi.gpio
+# If installing with pip:
+picamera2
+RPi.GPIO
+
+# Standard library (no install needed): json, socket, multiprocessing, time
+# libcamera is provided as a system package (python3-libcamera).

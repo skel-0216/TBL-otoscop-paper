@@ -1,0 +1,37 @@
+# Patient data
+ai_pipeline/real_data/
+# ai_pipeline/demo_data/
+
+# Notebook run artifacts
+**/demo_output/
+**/demo_output_roi/
+**/cache_roi/
+**/cache_raw/
+**/__checkpoints/
+**/__logs/
+
+# Python
+**/__pycache__/
+*.py[cod]
+*.egg-info/
+.ipynb_checkpoints/
+.venv/
+venv/
+env/
+
+# Android build
+**/build/
+**/.gradle/
+**/.idea/
+**/.cxx/
+**/local.properties
+*.iml
+*.apk
+*.aab
+
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+*~
+*.swp

@@ -1,0 +1,8 @@
+{
+  "my_ip_address": "10.42.0.1",
+  "streaming_socket": 1234,
+  "command_socket": 4321,
+
+  "use_scaler_crop": true,
+  "sar_correction": 1.0
+}
